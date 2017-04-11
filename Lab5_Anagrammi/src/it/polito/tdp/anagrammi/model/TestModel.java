@@ -5,7 +5,7 @@ public class TestModel {
 	public static void main(String[] args) {
 		
 		Model m = new Model();
-		String stringa = "eat";
+		String stringa = "abaco";
 		System.out.println(m.cercaAnagramma(stringa));
 
 	}

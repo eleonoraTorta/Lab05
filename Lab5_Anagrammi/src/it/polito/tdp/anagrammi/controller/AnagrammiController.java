@@ -44,11 +44,12 @@ public class AnagrammiController {
     @FXML
     void doAnagramma(ActionEvent event) {
     	String parola = txtParola.getText();
-    	ArrayList <Anagramma> anagrammi = new ArrayList <Anagramma>();
-    	anagrammi = (ArrayList<Anagramma>) model.cercaAnagramma(parola);
+    //	ArrayList <Anagramma> anagrammi = new ArrayList <Anagramma>();
+    	ArrayList <Anagramma> anagrammi = (ArrayList<Anagramma>) model.cercaAnagramma(parola);
     	for( Anagramma a : anagrammi){
     		if( model.anagrammaIsCorrect(a.getParola())){
-    			txtCorretti.appendText(a.getParola() +"\n");}
+    			txtCorretti.appendText(a.getParola() +"\n");
+    		}
     		else{
     			txtErrati.appendText(a.getParola()+ "\n");;  }
     	}

@@ -24,7 +24,7 @@ public class AnagrammaDAO {
 			st.setString(1, anagramma);
 
 			ResultSet rs = st.executeQuery();
-			conn.close();
+
 			
 			while(rs.next()){
 				String stringa = rs.getString("nome");
@@ -32,7 +32,9 @@ public class AnagrammaDAO {
 					return true;
 				}
 			}
+			conn.close();
 			return false;
+			
 				
 		}catch (SQLException e) {
 			// e.printStackTrace();
