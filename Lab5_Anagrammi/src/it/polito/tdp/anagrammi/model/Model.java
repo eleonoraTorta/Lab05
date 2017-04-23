@@ -6,19 +6,21 @@ import it.polito.tdp.anagrammi.DAO.AnagrammaDAO;
 
 public class Model {
 	
+//	private List <Anagramma> solutions ;
+//	private LinkedList <Lettera> lettere ; 
+	
 	public Model(){  
-	
+//		solutions = new ArrayList <Anagramma>();
+//		lettere = new LinkedList <Lettera>();
 	}
-	
-	private List <Anagramma> solutions ;
-	private LinkedList <Lettera> lettere = new LinkedList<Lettera>(); 
-	
+
 	
 	public boolean anagrammaIsCorrect(String anagramma){
 		AnagrammaDAO a = new AnagrammaDAO();
 		return a.isCorrect(anagramma);
 	}
 	
+	/*
 	public List<Anagramma> cercaAnagramma(String parola){
 		solutions = new ArrayList <Anagramma>();
 		
@@ -53,5 +55,42 @@ public class Model {
 				parziale.remove(l);
 			}
 		}
+	}
+	*/
+	
+	public Set<String> calcolaAnagrammi(String parola){
+		Set<String> anagrammi = new HashSet<String>();
+		String parziale = "";
+		recursive(parziale,parola,0,anagrammi);
+		return anagrammi;
+	}
+	
+	private void recursive(String parziale,String parola, int passo, Set<String> anagrammi){
+		if(passo == parola.length()){
+			anagrammi.add(parziale);
+			return;
+		}
+		
+		for(int i = 0; i< parola.length(); i++){
+			if(charCounter(parziale, parola.charAt(i))< charCounter(parola, parola.charAt(i))){
+				parziale += parola.charAt(i);
+				recursive(parziale, parola, passo + 1,anagrammi);
+				parziale = parziale.substring(0,parziale.length()-1);
+			}
+		}
+			
+	}
+	
+
+	private static int charCounter(String string, char c){
+		int count = 0;
+	    for (int i=0; i < string.length(); i++)
+	    {
+	        if (string.charAt(i) == c)
+	        {
+	             count++;
+	        }
+	    }
+	    return count;
 	}
 }

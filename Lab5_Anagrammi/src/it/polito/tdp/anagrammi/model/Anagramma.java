@@ -6,7 +6,6 @@ public class Anagramma {
 	
 	private String parola;
 	private int dim;
-	private List <String> parziali = new ArrayList <String>();
 	
 	/**
 	 * @param parola
@@ -84,20 +83,5 @@ public class Anagramma {
 	public String toString() {
 		return parola;
 	}
-/* boolean contains(String parolaDaCercare){
-		if( this.parziali.contains(parolaDaCercare)){
-			return true;
-		}
-		return false;
-	}
-	
-	public void addParziale(String prova ){
-		parziali.add(prova);
-	}
-	
-	public void remove(String parola){
-		parziali.remove(parola);
-	}
-	
-*/
+
 }
